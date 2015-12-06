@@ -9,17 +9,27 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 	class Convite
 	{
 		private static int idCount;
-		private static List<Convite> convites;
+		private static List<Convite> Convites;
 
 		static Convite()
 		{
-			convites = new List<Convite>();
+			Convites = new List<Convite>();
 		}
 
 		public static bool Existe(string numeroConvidado, int idEvento)
 		{
-			return convites.Find(c => c.numeroConvidado == numeroConvidado && c.idEvento == idEvento) != null;
+			return Convites.Find(c => c.numeroConvidado == numeroConvidado && c.idEvento == idEvento) != null;
 		}
+
+		public static List<Convite> SelectConvitesDeContato(string numeroConvidado)
+		{
+			return (List<Convite>) Convites.Select(c => c.numeroConvidado == numeroConvidado);
+        }
+
+		public static Convite Find(string numeroConvidado, int idEvento)
+		{
+			return Convites.Find(c => c.numeroConvidado == numeroConvidado && c.idEvento == idEvento);
+        }
 
 		public int id { get; set; }
 		public string numeroConvidado { get; set; }
@@ -29,12 +39,12 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 		{
 			if (Existe(numeroConvidado, idEvento))
 				throw new Exception();
-			if (Contato.Possui(numeroConvidado) && Evento.Existe(idEvento))
+			if (Contato.Existe(numeroConvidado) && Evento.Existe(idEvento))
 				throw new Exception();
 			id = idCount++;
 			this.numeroConvidado = numeroConvidado;
 			this.idEvento = idEvento;
-			convites.Add(this);
+			Convites.Add(this);
 		}
 
 		public void aceitarConvite(bool aceitar = true)
@@ -44,7 +54,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 				Evento.Find(idEvento).addParticipante(numeroConvidado);
 				Contato.Find(numeroConvidado).addEvento(idEvento);
 			}
-			convites.Remove(this);
+			Convites.Remove(this);
 		}
 	}
 }

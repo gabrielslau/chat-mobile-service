@@ -9,31 +9,31 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 	class Contato
 	{
 		private static int idCount;
-		private static List<Contato> contatos;
+		private static List<Contato> Contatos;
 
 		static Contato()
 		{
-			contatos = new List<Contato>();
+			Contatos = new List<Contato>();
 		}
 
 		public static Contato Find(string numero)
 		{
-			return contatos.Find(c => c.numero == numero);
+			return Contatos.Find(c => c.numero == numero);
 		}
 
 		public static void EditNome(string numero, string nome)
 		{
-			contatos.Find(c => c.numero == numero).nome = nome;
+			Contatos.Find(c => c.numero == numero).nome = nome;
 		}
 
 		public static void EditUri(string numero, string uri)
 		{
-			contatos.Find(c => c.numero == numero).uri = uri;
+			Contatos.Find(c => c.numero == numero).uri = uri;
 		}
 
 		public static bool Existe(string numero)
 		{
-			return contatos.Find(c => c.numero == numero) != null;
+			return Contatos.Find(c => c.numero == numero) != null;
         }
 
 		/*Variaveis de Contato*/
@@ -53,22 +53,22 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			this.numero = numero;
 			this.uri = uri;
 			eventos = new List<Evento>();
-			contatos.Add(this);
+			Contatos.Add(this);
 		}
 
 		public void addEvento(int idEvento)
 		{
-			throw new NotImplementedException();
+			Evento evento = Evento.Find(idEvento);
+			if (evento == null)
+				throw new Exception();
+			eventos.Add(evento);
 		}
 
 		public void removerEvento(int idEvento)
 		{
-			throw new NotImplementedException();
-		}
-
-		public void aceitarConvite(int idConvite)
-		{
-			throw new NotImplementedException();
+			Evento evento = eventos.Find(e => e.id == idEvento);
+			if (evento != null)
+				eventos.Remove(evento);
 		}
 	}
 }

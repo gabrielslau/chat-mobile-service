@@ -9,27 +9,27 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 	class Evento
 	{
 		private static int idCount;
-		private static List<Evento> eventos;
+		private static List<Evento> Eventos;
 
 		static Evento()
 		{
-			eventos = new List<Evento>();
+			Eventos = new List<Evento>();
 		}
 
 		public static Evento Find(int id)
 		{
-			return eventos.Find(e => e.id == id);
+			return Eventos.Find(e => e.id == id);
 		}
 
 		public static bool Existe(int id)
 		{
-			return eventos.Find(e => e.id == id) != null;
+			return Eventos.Find(e => e.id == id) != null;
 		}
 
 		public static void excluirEvento(int idEvento)
 		{
 			if(Existe(idEvento))
-				eventos.Find(e => e.id == idEvento).excluirEvento();
+				Eventos.Find(e => e.id == idEvento).excluirEvento();
 		}
 
 
@@ -56,7 +56,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			this.data = data;
 			participantes = new List<Contato>();
 			participantes.Add(responsavel);
-			eventos.Add(this);
+			Eventos.Add(this);
 			responsavel.addEvento(id);
 		}
 
@@ -67,24 +67,34 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			this.data = data;
 		}
 
-		public void addParticipante(string numero)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void convidarParticipante(string numero)
 		{
-			throw new NotImplementedException();
+			Convite convite = new Convite(numero, this.id);
+		}
+
+		public void addParticipante(string numero)
+		{
+			Contato participante = Contato.Find(numero);
+			if (participante == null)
+				throw new Exception();
+			participantes.Add(participante);
 		}
 
 		public void removerParticipante(string numero)
 		{
-			throw new NotImplementedException();
+			Contato participante = participantes.Find(p => p.numero == numero);
+			if (participante != null)
+			{
+				participantes.Remove(participante);
+				participante.removerEvento(id);
+			}
 		}
 
 		public void excluirEvento()
 		{
-			throw new NotImplementedException();
+			foreach (Contato c in participantes)
+				c.removerEvento(id);
+			Eventos.Remove(this);
 		}
 	}
 }
