@@ -4,3 +4,9 @@ D:\_Git\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\bin
 D:\_Git\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.csprojResolveAssemblyReference.cache
 D:\_Git\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.dll
 D:\_Git\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.pdb
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\bin\GerenciadorDeEventosWCF.dll.config
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\bin\GerenciadorDeEventosWCF.dll
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\bin\GerenciadorDeEventosWCF.pdb
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.csprojResolveAssemblyReference.cache
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.dll
+D:\_Git\chat-mobile-service\GerenciadorDeEventos\GerenciadorDeEventosWCF\GerenciadorDeEventosWCF\obj\Debug\GerenciadorDeEventosWCF.pdb

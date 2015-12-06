@@ -1,0 +1,23 @@
+﻿<xapCache source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Bin\Debug\SisEventos_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="06/12/2015 14:45:10">
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\obj\Debug\SisEventos.dll" archivePath="SisEventos.dll" lastWriteTime="06/12/2015 14:45:08" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="04/12/2015 07:56:56" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="04/12/2015 07:56:55" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="04/12/2015 07:56:56" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="04/12/2015 07:56:56" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="04/12/2015 07:56:56" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\add.png" archivePath="Images\add.png" lastWriteTime="04/12/2015 09:17:20" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\delete.png" archivePath="Images\delete.png" lastWriteTime="04/12/2015 09:17:20" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\edit.png" archivePath="Images\edit.png" lastWriteTime="04/12/2015 09:17:20" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\feature.search.png" archivePath="Images\feature.search.png" lastWriteTime="04/12/2015 09:59:26" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\overflowdots.png" archivePath="Images\overflowdots.png" lastWriteTime="04/12/2015 09:04:07" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Images\save.png" archivePath="Images\save.png" lastWriteTime="04/12/2015 09:17:20" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\overflowdots.png" archivePath="overflowdots.png" lastWriteTime="04/12/2015 09:56:21" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="05/12/2015 09:28:14" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="04/12/2015 07:56:56" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="04/12/2015 07:56:55" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\MSAdvertising\6.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.dll" archivePath="Microsoft.Advertising.Mobile.dll" lastWriteTime="16/09/2013 10:09:00" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\MSAdvertising\6.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI.dll" archivePath="Microsoft.Advertising.Mobile.UI.dll" lastWriteTime="16/09/2013 10:09:00" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\MSAdvertising\6.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI.xml" archivePath="Microsoft.Advertising.Mobile.UI.xml" lastWriteTime="16/09/2013 10:13:06" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\MSAdvertising\6.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.xml" archivePath="Microsoft.Advertising.Mobile.xml" lastWriteTime="16/09/2013 10:13:06" />
+  <file source="D:\_Git\chat-mobile-service\GerenciadorDeEventos\SisEventos\SisEventos\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="04/12/2015 07:59:42" />
+</xapCache>

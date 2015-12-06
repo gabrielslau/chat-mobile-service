@@ -31,7 +31,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			contatos.Find(c => c.numero == numero).uri = uri;
 		}
 
-		public static bool Possui(string numero)
+		public static bool Existe(string numero)
 		{
 			return contatos.Find(c => c.numero == numero) != null;
         }
@@ -46,7 +46,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 
 		public Contato(string nome, string numero, string uri)
 		{
-			if (Possui(numero))
+			if (Existe(numero))
 				throw new Exception();
 			id = idCount++;
 			this.nome = nome;
