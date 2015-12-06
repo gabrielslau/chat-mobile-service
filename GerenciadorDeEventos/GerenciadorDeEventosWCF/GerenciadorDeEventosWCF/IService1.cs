@@ -1,6 +1,6 @@
-﻿using System;
+﻿using GerenciadorDeEventosWCF.ClassesBanco;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
@@ -8,40 +8,39 @@ using System.Text;
 
 namespace GerenciadorDeEventosWCF
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-	[ServiceContract]
-	public interface IService1
-	{
+    [ServiceContract]
+    public interface IService1
+    {
+        // Evento
+        [OperationContract]
+        List<Evento> EventoListar();
+        [OperationContract]
+        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel);
+        [OperationContract]
+        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data);
+        [OperationContract]
+        void EventoDelete(int evento_id);
+        [OperationContract]
+        void EventoAdicionarParticipante(int evento_id, string numero_participante);
+        [OperationContract]
+        void EventoConvidarParticipante(int evento_id, string numero_participante);
+        [OperationContract]
+        void EventoRemoverParticipante(int evento_id, string numero_participante);
 
-		[OperationContract]
-		string GetData(int value);
+        // Contato
+        [OperationContract]
+        List<Contato> ContatoListar();
+        [OperationContract]
+        void ContatoAdicionar(string nome, string numero, string uri);
+        [OperationContract]
+        void ContatoAtualizar(string nome, string numero);
+        [OperationContract]
+        void ContatoRemover(string numero);
 
-		[OperationContract]
-		CompositeType GetDataUsingDataContract(CompositeType composite);
-
-		// TODO: Add your service operations here
-	}
-
-
-	// Use a data contract as illustrated in the sample below to add composite types to service operations.
-	[DataContract]
-	public class CompositeType
-	{
-		bool boolValue = true;
-		string stringValue = "Hello ";
-
-		[DataMember]
-		public bool BoolValue
-		{
-			get { return boolValue; }
-			set { boolValue = value; }
-		}
-
-		[DataMember]
-		public string StringValue
-		{
-			get { return stringValue; }
-			set { stringValue = value; }
-		}
-	}
+        // Convite
+        [OperationContract]
+        List<Convite> ConviteListar(string numeroConvidado);
+        [OperationContract]
+        void ConviteAceitar(int evento_id, string numeroConvidado);
+    }
 }

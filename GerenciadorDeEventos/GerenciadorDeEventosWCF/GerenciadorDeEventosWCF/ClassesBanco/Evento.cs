@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeEventosWCF.ClassesBanco
 {
-	class Evento
+	public class Evento
 	{
 		private static int idCount;
 		private static List<Evento> Eventos;

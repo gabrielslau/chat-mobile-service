@@ -9,26 +9,101 @@ using System.Text;
 
 namespace GerenciadorDeEventosWCF
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-	// NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-	public class Service1 : IService1
-	{
-		public string GetData(int value)
-		{
-			return string.Format("You entered: " + value);
-		}
+    public class Service1 : IService1
+    {
+        //
+        // Contatos
+        //
+        public void ContatoAdicionar(string nome, string numero, string uri)
+        {
+            Contato contato = new Contato(nome, numero, uri);
+        }
 
-		public CompositeType GetDataUsingDataContract(CompositeType composite)
-		{
-			if (composite == null)
-			{
-				throw new ArgumentNullException("composite");
-			}
-			if (composite.BoolValue)
-			{
-				composite.StringValue += "Suffix";
-			}
-			return composite;
-		}
-	}
+        public void ContatoAtualizar(string nome, string numero)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public List<Contato> ContatoListar()
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public void ContatoRemover(string numero)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        //
+        // Convites
+        //
+        public void ConviteAceitar(int evento_id, string numeroConvidado)
+        {
+            Convite convite = new Convite(numeroConvidado, evento_id);
+            convite.aceitarConvite();
+        }
+
+        public List<Convite> ConviteListar(string numeroConvidado)
+        {
+            return Convite.SelectConvitesDeContato(numeroConvidado);
+        }
+
+        //
+        // Eventos
+        //
+        public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel)
+        {
+            Evento evento = new Evento(nome, descricao, data, numeroResponsavel);
+        }
+
+        public void EventoAdicionarParticipante(int evento_id, string numeroParticipante)
+        {
+            if (Evento.Existe(evento_id))
+            {
+                Evento evento = Evento.Find(evento_id);
+                evento.addParticipante(numeroParticipante);
+            }
+        }
+
+        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data)
+        {
+            if (Evento.Existe(evento_id))
+            {
+                Evento evento = Evento.Find(evento_id);
+                evento.alterarDados(nome, descricao, data);
+            }
+        }
+
+        public void EventoConvidarParticipante(int evento_id, string numeroParticipante)
+        {
+            if (Evento.Existe(evento_id))
+            {
+                Evento evento = Evento.Find(evento_id);
+                evento.convidarParticipante(numeroParticipante);
+            }
+        }
+
+        public void EventoDelete(int evento_id)
+        {
+            Evento.excluirEvento(evento_id);
+        }
+
+        public List<Evento> EventoListar()
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public void EventoRemoverParticipante(int evento_id, string numeroParticipante)
+        {
+            if (Evento.Existe(evento_id))
+            {
+                Evento evento = Evento.Find(evento_id);
+                evento.removerParticipante(numeroParticipante);
+            }
+        }
+    }
 }
