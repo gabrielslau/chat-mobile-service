@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeEventosWCF.ClassesBanco
 {
+    [DataContract]
 	public class Convite
 	{
 		private static int idCount;
@@ -31,9 +33,12 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			return Convites.Find(c => c.numeroConvidado == numeroConvidado && c.idEvento == idEvento);
         }
 
-		public int id { get; set; }
-		public string numeroConvidado { get; set; }
-		public int idEvento { get; set; }
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string numeroConvidado { get; set; }
+        [DataMember]
+        public int idEvento { get; set; }
 
 		public Convite(string numeroConvidado, int idEvento)
 		{

@@ -46,6 +46,9 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock x:Name="textBlockUsername" HorizontalAlignment="Left" Margin="24,90,0,0" TextWrapping="Wrap" Text="Digite o seu nome:" VerticalAlignment="Top"/>
+            <TextBox x:Name="usernameTxt" HorizontalAlignment="Stretch" Height="72" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446"/>
+            
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="24,199,0,0" TextWrapping="Wrap" Text="Digite o número do seu celular:" VerticalAlignment="Top"/>
             <TextBox x:Name="loginTxt" HorizontalAlignment="Stretch" Height="72" Margin="10,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446"/>
             <Button x:Name="button" Content="Entrar" HorizontalAlignment="Stretch" Margin="10,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.096,0.24" Click="button_Click"/>

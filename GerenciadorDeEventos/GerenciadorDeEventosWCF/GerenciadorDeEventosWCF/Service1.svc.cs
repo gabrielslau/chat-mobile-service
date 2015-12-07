@@ -83,12 +83,12 @@ namespace GerenciadorDeEventosWCF
         //
         // Eventos
         //
-        public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel, long latitude, long longitude)
+        public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel, double latitude, double longitude)
         {
             Evento evento = new Evento(nome, descricao, data, numeroResponsavel, latitude, longitude);
         }
 
-        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, long latitude, long longitude)
+        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, double latitude, double longitude)
 		{
 			Evento evento = Evento.Find(evento_id);
 			if (evento != null)

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeEventosWCF.ClassesBanco
 {
+    [DataContract]
 	public class Contato
 	{
 		private static int idCount;
@@ -31,13 +33,18 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			return Contatos;
 		}
 
-		/*Variaveis de Contato*/
+        /*Variaveis de Contato*/
 
-		public int id { get; private set; }
-		public string nome { get; private set; }
-		public string numero { get; private set; }
-		public string uri { get; private set; }
-		public List<Evento> eventos { get; private set; }
+        [DataMember]
+        public int id { get; private set; }
+        [DataMember]
+        public string nome { get; private set; }
+        [DataMember]
+        public string numero { get; private set; }
+        [DataMember]
+        public string uri { get; private set; }
+        [DataMember]
+        public List<Evento> eventos { get; private set; }
 
 		public Contato(string nome, string numero, string uri)
 		{

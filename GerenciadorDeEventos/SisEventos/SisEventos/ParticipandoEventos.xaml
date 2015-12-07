@@ -97,7 +97,7 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="btnNovo" IconUri="/Images/add.png" Text="Adicionar" />
+            <shell:ApplicationBarIconButton x:Name="btnNovo" IconUri="/Images/add.png" Text="Adicionar" Click="btnNovo_Click" />
             <shell:ApplicationBarIconButton x:Name="btnBusca" IconUri="/Images/feature.search.png" Text="Buscar" />
             <!--  <shell:ApplicationBarIconButton x:Name="btnNovoSalvar" IconUri="/Images/save.png" Text="Salvar" Click="btnSalvar_Click" />-->
         </shell:ApplicationBar>

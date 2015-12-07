@@ -12,9 +12,22 @@ namespace SisEventos
 {
     public partial class DescricaoEvento : PhoneApplicationPage
     {
+        private GerenciadorDeEventos.Service1Client ws;
+
         public DescricaoEvento()
         {
             InitializeComponent();
+            ws = new GerenciadorDeEventos.Service1Client();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            
+            // TODO: implementar no serviço função de pegar dados do evento
+            tituloEvento.Text = "título do evento";
+            textBlock1.Text = "descrição do evento";
+            textBlock3.Text = "local do evento";
         }
     }
 }

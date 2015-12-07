@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeEventosWCF.ClassesBanco
 {
+    [DataContract]
 	public class Evento
 	{
 		private static int idCount;
@@ -32,14 +34,20 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 				Eventos.Find(e => e.id == idEvento).excluirEvento();
 		}
 
-
+        [DataMember]
 		public int id { get; private set; }
-		public string nome { get; private set; }
-		public string descricao { get; private set; }
-		public DateTime data { get; private set; }
-		public long latitude { get; private set; }
-		public long longitude { get; private set; }
-		public List<Contato> participantes { get; private set; }
+        [DataMember]
+        public string nome { get; private set; }
+        [DataMember]
+        public string descricao { get; private set; }
+        [DataMember]
+        public DateTime data { get; private set; }
+        [DataMember]
+        public double latitude { get; private set; }
+        [DataMember]
+        public double longitude { get; private set; }
+        [DataMember]
+        public List<Contato> participantes { get; private set; }
 
 		public Evento()
 		{
@@ -47,7 +55,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			participantes = new List<Contato>();
 		}
 		
-		public Evento(string nome, string descricao, DateTime data, string numeroResponsavel, long latitude, long longitude)
+		public Evento(string nome, string descricao, DateTime data, string numeroResponsavel, double latitude, double longitude)
 		{
 			Contato responsavel = Contato.Find(numeroResponsavel);
 			if (responsavel == null)
@@ -64,7 +72,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			responsavel.addEvento(id);
 		}
 
-		public void alterarDados(string nome, string descricao, DateTime data, long latitude, long longitude)
+		public void alterarDados(string nome, string descricao, DateTime data, double latitude, double longitude)
 		{
 			this.nome = nome;
 			this.descricao = descricao;

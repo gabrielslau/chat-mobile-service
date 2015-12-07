@@ -13,35 +13,25 @@ namespace SisEventos
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private GerenciadorDeEventos.Service1Client ws;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            ws = new GerenciadorDeEventos.Service1Client();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/CriarEvento.xaml", UriKind.Relative));
+            App.Phone = loginTxt.Text;
+            App.Nome = usernameTxt.Text;
+
+            // Teste para injetar automaticamente alguns eventos para o usuario
+            ws.EventoAdicionarAsync("titulo 1", "descricao 1", DateTime.Now, App.Phone, 1.0, 1.0);
+            ws.EventoAdicionarAsync("titulo 2", "descricao 2", DateTime.Now, App.Phone, 1.0, 1.0);
+
+            NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
         }
-        
-
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
     }
 }

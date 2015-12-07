@@ -12,6 +12,13 @@ namespace SisEventos
 {
     public partial class App : Application
     {
+        public static string Nome { get; set; }
+        public static string Phone { get; set; }
+
+        public static new App Current
+        {
+            get { return Application.Current as App; }
+        }
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>

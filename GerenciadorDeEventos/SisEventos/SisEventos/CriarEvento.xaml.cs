@@ -7,14 +7,33 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Windows.Devices.Geolocation;
+using Microsoft.Phone.Maps.Controls;
+using System.ServiceModel;
 
 namespace SisEventos
 {
     public partial class CriarEvento : PhoneApplicationPage
     {
+        private GerenciadorDeEventos.Service1Client ws;
+
         public CriarEvento()
         {
             InitializeComponent();
+            ws = new GerenciadorDeEventos.Service1Client();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            // Não é possível utilizar mapas sem um token de acesso da WindowsPhoneStore (somente após publicar o app)
+
+            //Geoposition geoposition = await new Geolocator().GetGeopositionAsync();
+            //ws.EventoAdicionarAsync(textBox.Text, txtArea.Text, DateTime.Now, App.Phone, geoposition.Coordinate.Point.Position.Latitude, geoposition.Coordinate.Point.Position.Longitude);
+
+            ws.EventoAdicionarAsync(textBox.Text, txtArea.Text, DateTime.Now, App.Phone, 1.0, 1.0);
+
+            // Redireciona para a página de listagem de eventos em que o usuário está participando
+            NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
         }
     }
 }
