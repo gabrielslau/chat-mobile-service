@@ -32,6 +32,8 @@
       <Column Name="nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Member="latitude" Type="System.Int64" CanBeNull="false" />
+      <Column Member="longitude" Type="System.Int64" CanBeNull="false" />
       <Association Name="Evento_Participante" Member="Participantes" ThisKey="id" OtherKey="idEvento" Type="Participante" />
       <Association Name="Evento_Convite" Member="Convites" ThisKey="id" OtherKey="idEvento" Type="Convite" />
     </Type>

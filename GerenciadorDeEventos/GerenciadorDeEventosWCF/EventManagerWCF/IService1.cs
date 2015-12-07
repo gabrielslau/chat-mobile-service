@@ -15,9 +15,9 @@ namespace EventManagerWCF
         List<Contato> ContatoListar();
         // Evento
         [OperationContract]
-        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel, double latitude, double longitude);
+        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel, long latitude, long longitude);
         [OperationContract]
-        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, double latitude, double longitude);
+        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, long latitude, long longitude);
         [OperationContract]
         void EventoDelete(int evento_id);
         [OperationContract]
@@ -35,7 +35,7 @@ namespace EventManagerWCF
 
         // Convite
         [OperationContract]
-        List<Evento> ConviteListar(string numeroContato);
+        List<Convite> ConviteListar(string numeroContato);
         [OperationContract]
         void ConviteAceitar(int evento_id, string numeroContato);
         [OperationContract]

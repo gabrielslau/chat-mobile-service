@@ -19,8 +19,7 @@ namespace EventManagerWCF
 	using System.Linq;
 	using System.Linq.Expressions;
 	using System.ComponentModel;
-    using System.Runtime.Serialization;
-    using System;
+	using System;
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EventManager")]
@@ -107,9 +106,8 @@ namespace EventManagerWCF
 			}
 		}
 	}
-
-    [DataContract]
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Contato")]
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Contato")]
 	public partial class Contato : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -144,9 +142,8 @@ namespace EventManagerWCF
 			this._Participantes = new EntitySet<Participante>(new Action<Participante>(this.attach_Participantes), new Action<Participante>(this.detach_Participantes));
 			OnCreated();
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -165,9 +162,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string nome
 		{
 			get
@@ -186,9 +182,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero", DbType="NChar(10)")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero", DbType="NChar(10)")]
 		public string numero
 		{
 			get
@@ -207,9 +202,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uri", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uri", DbType="NText", UpdateCheck=UpdateCheck.Never)]
 		public string uri
 		{
 			get
@@ -228,9 +222,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idContato")]
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idContato")]
 		public EntitySet<Participante> Participantes
 		{
 			get
@@ -275,9 +268,8 @@ namespace EventManagerWCF
 			entity.Contato = null;
 		}
 	}
-
-    [DataContract]
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Participantes")]
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Participantes")]
 	public partial class Participante : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -311,9 +303,8 @@ namespace EventManagerWCF
 			this._Evento = default(EntityRef<Evento>);
 			OnCreated();
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -332,9 +323,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idContato", DbType="Int NOT NULL")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idContato", DbType="Int NOT NULL")]
 		public int idContato
 		{
 			get
@@ -357,9 +347,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
 		public int idEvento
 		{
 			get
@@ -382,9 +371,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Contato", ThisKey="idContato", OtherKey="id", IsForeignKey=true)]
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Contato", ThisKey="idContato", OtherKey="id", IsForeignKey=true)]
 		public Contato Contato
 		{
 			get
@@ -417,9 +405,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
 		public Evento Evento
 		{
 			get
@@ -473,9 +460,8 @@ namespace EventManagerWCF
 			}
 		}
 	}
-
-    [DataContract]
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Convites")]
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Convites")]
 	public partial class Convite : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -506,9 +492,8 @@ namespace EventManagerWCF
 			this._Evento = default(EntityRef<Evento>);
 			OnCreated();
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -527,9 +512,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroConvidado", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroConvidado", DbType="NChar(10) NOT NULL", CanBeNull=false)]
 		public string numeroConvidado
 		{
 			get
@@ -548,9 +532,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
 		public int idEvento
 		{
 			get
@@ -573,9 +556,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
 		public Evento Evento
 		{
 			get
@@ -629,9 +611,8 @@ namespace EventManagerWCF
 			}
 		}
 	}
-
-    [DataContract]
-    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evento")]
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evento")]
 	public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -644,6 +625,10 @@ namespace EventManagerWCF
 		private string _descricao;
 		
 		private System.DateTime _data;
+		
+		private long _latitude;
+		
+		private long _longitude;
 		
 		private EntitySet<Participante> _Participantes;
 		
@@ -661,6 +646,10 @@ namespace EventManagerWCF
     partial void OndescricaoChanged();
     partial void OndataChanging(System.DateTime value);
     partial void OndataChanged();
+    partial void OnlatitudeChanging(long value);
+    partial void OnlatitudeChanged();
+    partial void OnlongitudeChanging(long value);
+    partial void OnlongitudeChanged();
     #endregion
 		
 		public Evento()
@@ -669,9 +658,8 @@ namespace EventManagerWCF
 			this._Convites = new EntitySet<Convite>(new Action<Convite>(this.attach_Convites), new Action<Convite>(this.detach_Convites));
 			OnCreated();
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -690,9 +678,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string nome
 		{
 			get
@@ -711,9 +698,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="NText", UpdateCheck=UpdateCheck.Never)]
 		public string descricao
 		{
 			get
@@ -732,9 +718,8 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
 		public System.DateTime data
 		{
 			get
@@ -753,9 +738,48 @@ namespace EventManagerWCF
 				}
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idEvento")]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_latitude")]
+		public long latitude
+		{
+			get
+			{
+				return this._latitude;
+			}
+			set
+			{
+				if ((this._latitude != value))
+				{
+					this.OnlatitudeChanging(value);
+					this.SendPropertyChanging();
+					this._latitude = value;
+					this.SendPropertyChanged("latitude");
+					this.OnlatitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longitude")]
+		public long longitude
+		{
+			get
+			{
+				return this._longitude;
+			}
+			set
+			{
+				if ((this._longitude != value))
+				{
+					this.OnlongitudeChanging(value);
+					this.SendPropertyChanging();
+					this._longitude = value;
+					this.SendPropertyChanged("longitude");
+					this.OnlongitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idEvento")]
 		public EntitySet<Participante> Participantes
 		{
 			get
@@ -767,9 +791,8 @@ namespace EventManagerWCF
 				this._Participantes.Assign(value);
 			}
 		}
-
-        [DataMember]
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Convites", ThisKey="id", OtherKey="idEvento")]
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Convites", ThisKey="id", OtherKey="idEvento")]
 		public EntitySet<Convite> Convites
 		{
 			get
