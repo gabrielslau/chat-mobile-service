@@ -21,20 +21,15 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			return Contatos.Find(c => c.numero == numero);
 		}
 
-		public static void EditNome(string numero, string nome)
-		{
-			Contatos.Find(c => c.numero == numero).nome = nome;
-		}
-
-		public static void EditUri(string numero, string uri)
-		{
-			Contatos.Find(c => c.numero == numero).uri = uri;
-		}
-
 		public static bool Existe(string numero)
 		{
 			return Contatos.Find(c => c.numero == numero) != null;
         }
+
+		public static List<Contato> All()
+		{
+			return Contatos;
+		}
 
 		/*Variaveis de Contato*/
 
@@ -42,7 +37,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 		public string nome { get; private set; }
 		public string numero { get; private set; }
 		public string uri { get; private set; }
-		private List<Evento> eventos;
+		public List<Evento> eventos { get; private set; }
 
 		public Contato(string nome, string numero, string uri)
 		{
@@ -54,6 +49,12 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			this.uri = uri;
 			eventos = new List<Evento>();
 			Contatos.Add(this);
+		}
+
+		public void atualizarDados(string nome, string uri)
+		{
+			this.nome = nome;
+			this.uri = uri;
 		}
 
 		public void addEvento(int idEvento)

@@ -19,34 +19,63 @@ namespace GerenciadorDeEventosWCF
             Contato contato = new Contato(nome, numero, uri);
         }
 
-        public void ContatoAtualizar(string nome, string numero)
+        public void ContatoAtualizar(string nome, string numero, string uri)
         {
-            // TODO
-            throw new NotImplementedException();
-        }
+			Contato contato = Contato.Find(numero);
+			if (contato != null)
+			{
+				contato.atualizarDados(nome, uri);
+			}
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
 
-        public List<Contato> ContatoListar()
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
+		public List<Evento> ContatoEventos(string numero)
+		{
+			Contato contato = Contato.Find(numero);
+			if (contato != null)
+			{
+				return contato.eventos;
+			}
+			else
+			{
+				return new List<Evento>();
+			}
+		}
 
-        public void ContatoRemover(string numero)
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
+		public List<Contato> ContatoListar()
+		{
+			return Contato.All();
+		}
 
-        //
-        // Convites
-        //
-        public void ConviteAceitar(int evento_id, string numeroConvidado)
-        {
-            Convite convite = new Convite(numeroConvidado, evento_id);
-            convite.aceitarConvite();
-        }
+		//
+		// Convites
+		//
+		public void ConviteAceitar(int evento_id, string numeroConvidado)
+		{
+			Convite convite = Convite.Find(numeroConvidado, evento_id);
+			if (convite != null)
+				convite.aceitarConvite();
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
 
-        public List<Convite> ConviteListar(string numeroConvidado)
+		public void ConviteRecusar(int evento_id, string numeroConvidado)
+		{
+			Convite convite = Convite.Find(numeroConvidado, evento_id);
+			if (convite != null)
+				convite.aceitarConvite(false);
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
+
+		public List<Convite> ConviteListar(string numeroConvidado)
         {
             return Convite.SelectConvitesDeContato(numeroConvidado);
         }
@@ -54,56 +83,47 @@ namespace GerenciadorDeEventosWCF
         //
         // Eventos
         //
-        public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel)
+        public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel, long latitude, long longitude)
         {
-            Evento evento = new Evento(nome, descricao, data, numeroResponsavel);
+            Evento evento = new Evento(nome, descricao, data, numeroResponsavel, latitude, longitude);
         }
 
-        public void EventoAdicionarParticipante(int evento_id, string numeroParticipante)
-        {
-            if (Evento.Existe(evento_id))
-            {
-                Evento evento = Evento.Find(evento_id);
-                evento.addParticipante(numeroParticipante);
-            }
-        }
-
-        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data)
-        {
-            if (Evento.Existe(evento_id))
-            {
-                Evento evento = Evento.Find(evento_id);
-                evento.alterarDados(nome, descricao, data);
-            }
-        }
+        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, long latitude, long longitude)
+		{
+			Evento evento = Evento.Find(evento_id);
+			if (evento != null)
+                evento.alterarDados(nome, descricao, data, latitude, longitude);
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
 
         public void EventoConvidarParticipante(int evento_id, string numeroParticipante)
-        {
-            if (Evento.Existe(evento_id))
-            {
-                Evento evento = Evento.Find(evento_id);
-                evento.convidarParticipante(numeroParticipante);
-            }
-        }
+		{
+			Evento evento = Evento.Find(evento_id);
+			if (evento != null)
+				evento.convidarParticipante(numeroParticipante);
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
 
         public void EventoDelete(int evento_id)
         {
             Evento.excluirEvento(evento_id);
         }
 
-        public List<Evento> EventoListar()
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
-
         public void EventoRemoverParticipante(int evento_id, string numeroParticipante)
-        {
-            if (Evento.Existe(evento_id))
-            {
-                Evento evento = Evento.Find(evento_id);
+		{
+			Evento evento = Evento.Find(evento_id);
+			if (evento != null)
                 evento.removerParticipante(numeroParticipante);
-            }
-        }
+			else
+			{
+				//Enviar mensagem de erro
+			}
+		}
     }
 }

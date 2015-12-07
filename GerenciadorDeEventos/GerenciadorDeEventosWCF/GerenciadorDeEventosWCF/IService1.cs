@@ -10,18 +10,16 @@ namespace GerenciadorDeEventosWCF
 {
     [ServiceContract]
     public interface IService1
-    {
-        // Evento
-        [OperationContract]
-        List<Evento> EventoListar();
-        [OperationContract]
-        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel);
-        [OperationContract]
-        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data);
-        [OperationContract]
+	{
+		[OperationContract]
+		List<Contato> ContatoListar();
+		// Evento
+		[OperationContract]
+        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel, long latitude, long longitude);
+		[OperationContract]
+		void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, long latitude, long longitude);
+		[OperationContract]
         void EventoDelete(int evento_id);
-        [OperationContract]
-        void EventoAdicionarParticipante(int evento_id, string numero_participante);
         [OperationContract]
         void EventoConvidarParticipante(int evento_id, string numero_participante);
         [OperationContract]
@@ -29,18 +27,18 @@ namespace GerenciadorDeEventosWCF
 
         // Contato
         [OperationContract]
-        List<Contato> ContatoListar();
-        [OperationContract]
         void ContatoAdicionar(string nome, string numero, string uri);
-        [OperationContract]
-        void ContatoAtualizar(string nome, string numero);
-        [OperationContract]
-        void ContatoRemover(string numero);
+		[OperationContract]
+		void ContatoAtualizar(string nome, string numero, string uri);
+		[OperationContract]
+		List<Evento> ContatoEventos(string numero);
 
-        // Convite
+		// Convite
+		[OperationContract]
+        List<Convite> ConviteListar(string numeroContato);
         [OperationContract]
-        List<Convite> ConviteListar(string numeroConvidado);
-        [OperationContract]
-        void ConviteAceitar(int evento_id, string numeroConvidado);
-    }
+        void ConviteAceitar(int evento_id, string numeroContato);
+		[OperationContract]
+		void ConviteRecusar(int evento_id, string numeroContato);
+	}
 }

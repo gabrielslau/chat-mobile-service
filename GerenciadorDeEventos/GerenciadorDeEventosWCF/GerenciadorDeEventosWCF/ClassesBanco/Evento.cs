@@ -37,7 +37,9 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 		public string nome { get; private set; }
 		public string descricao { get; private set; }
 		public DateTime data { get; private set; }
-		private List<Contato> participantes;
+		public long latitude { get; private set; }
+		public long longitude { get; private set; }
+		public List<Contato> participantes { get; private set; }
 
 		public Evento()
 		{
@@ -45,7 +47,7 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			participantes = new List<Contato>();
 		}
 		
-		public Evento(string nome, string descricao, DateTime data, string numeroResponsavel)
+		public Evento(string nome, string descricao, DateTime data, string numeroResponsavel, long latitude, long longitude)
 		{
 			Contato responsavel = Contato.Find(numeroResponsavel);
 			if (responsavel == null)
@@ -54,17 +56,21 @@ namespace GerenciadorDeEventosWCF.ClassesBanco
 			this.nome = nome;
 			this.descricao = descricao;
 			this.data = data;
+			this.latitude = latitude;
+			this.longitude = longitude;
 			participantes = new List<Contato>();
 			participantes.Add(responsavel);
 			Eventos.Add(this);
 			responsavel.addEvento(id);
 		}
 
-		public void alterarDados(string nome, string descricao, DateTime data)
+		public void alterarDados(string nome, string descricao, DateTime data, long latitude, long longitude)
 		{
 			this.nome = nome;
 			this.descricao = descricao;
 			this.data = data;
+			this.latitude = latitude;
+			this.longitude = longitude;
 		}
 
 		public void convidarParticipante(string numero)
