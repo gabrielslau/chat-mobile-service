@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="Evento" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>SisEventos.GerenciadorDeEventos.Evento</TypeInfo>
+<GenericObjectDataSource DisplayName="Contato" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>SisEventos.EventManager.Contato</TypeInfo>
 </GenericObjectDataSource>

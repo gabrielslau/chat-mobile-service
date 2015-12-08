@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using SisEventos.GerenciadorDeEventos;
+using SisEventos.EventManager;
 
 namespace SisEventos
 {
@@ -24,10 +24,19 @@ namespace SisEventos
 
 		private void Ws_EventoAbrirCompleted(object sender, EventoAbrirCompletedEventArgs e)
 		{
-			tituloEvento.Text = e.Result.nome;
-			textBlock1.Text = e.Result.descricao;
+			tituloEvento.Text = e.Result.Nome;
+			textBlock1.Text = e.Result.Descricao;
 			textBlock3.Text = "local do evento";
-			listBox1.ItemsSource = e.Result.participantes;
+
+            List<Participante> participantes = e.Result.Participantes.ToList();
+            List<Contato> contatos = new List<Contato>();
+
+            foreach(var contato in participantes)
+            {
+                contatos.Add(contato.Contato);
+            }
+
+			listBox1.ItemsSource = contatos;
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)

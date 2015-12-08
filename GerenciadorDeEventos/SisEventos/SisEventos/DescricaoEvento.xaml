@@ -15,10 +15,9 @@
 	<phone:PhoneApplicationPage.Resources>
 		<DataTemplate x:Key="EventoParticipando">
 			<StackPanel>
-				<TextBlock Name="ID" FontSize="20" Text="{Binding id}" Visibility="Collapsed" />
-				<TextBlock FontSize="28" Text="{Binding nome}" />
-				<TextBlock FontSize="20" Text="{Binding numero}" />
-				<!--TextBlock FontSize="20" Text="{Binding Local}" /-->
+				<TextBlock Name="ID" FontSize="20" Text="{Binding Id}" Visibility="Collapsed" />
+				<TextBlock FontSize="28" Text="{Binding Nome}" />
+				<TextBlock FontSize="20" Text="{Binding Numero}" />
 			</StackPanel>
 		</DataTemplate>
 	</phone:PhoneApplicationPage.Resources>

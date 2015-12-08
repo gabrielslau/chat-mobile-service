@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:54942/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" />
+  <xs:import schemaLocation="http://localhost/EventManager/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EventManagerWCF" />
   <xs:element name="ContatoListar">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +9,7 @@
   <xs:element name="ContatoListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ContatoListarResult" nillable="true" type="q1:ArrayOfContato" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EventManagerWCF" minOccurs="0" name="ContatoListarResult" nillable="true" type="q1:ArrayOfContato" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -20,8 +20,8 @@
         <xs:element minOccurs="0" name="descricao" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="data" type="xs:dateTime" />
         <xs:element minOccurs="0" name="numero_responsavel" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="latitude" type="xs:double" />
-        <xs:element minOccurs="0" name="longitude" type="xs:double" />
+        <xs:element minOccurs="0" name="latitude" type="xs:float" />
+        <xs:element minOccurs="0" name="longitude" type="xs:float" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -37,8 +37,8 @@
         <xs:element minOccurs="0" name="nome" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="descricao" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="data" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="latitude" type="xs:double" />
-        <xs:element minOccurs="0" name="longitude" type="xs:double" />
+        <xs:element minOccurs="0" name="latitude" type="xs:float" />
+        <xs:element minOccurs="0" name="longitude" type="xs:float" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -57,7 +57,7 @@
   <xs:element name="EventoAbrirResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="EventoAbrirResult" nillable="true" type="q2:Evento" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EventManagerWCF" minOccurs="0" name="EventoAbrirResult" nillable="true" type="q2:Evento" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -137,7 +137,7 @@
   <xs:element name="ContatoEventosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ContatoEventosResult" nillable="true" type="q3:ArrayOfEvento" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EventManagerWCF" minOccurs="0" name="ContatoEventosResult" nillable="true" type="q3:ArrayOfEvento" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -151,7 +151,7 @@
   <xs:element name="ConviteListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ConviteListarResult" nillable="true" type="q4:ArrayOfConvite" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EventManagerWCF" minOccurs="0" name="ConviteListarResult" nillable="true" type="q4:ArrayOfConvite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

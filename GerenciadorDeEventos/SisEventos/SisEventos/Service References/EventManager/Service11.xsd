@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EventManagerWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EventManagerWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfContato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contato" nillable="true" type="tns:Contato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContato" nillable="true" type="tns:ArrayOfContato" />
+  <xs:complexType name="Contato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contato" nillable="true" type="tns:Contato" />
+  <xs:complexType name="Evento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Convites" nillable="true" type="tns:ArrayOfConvite" />
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Participantes" nillable="true" type="tns:ArrayOfParticipante" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Evento" nillable="true" type="tns:Evento" />
+  <xs:complexType name="ArrayOfConvite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Convite" nillable="true" type="tns:Convite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConvite" nillable="true" type="tns:ArrayOfConvite" />
+  <xs:complexType name="Convite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdEvento" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroConvidado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Convite" nillable="true" type="tns:Convite" />
+  <xs:complexType name="ArrayOfParticipante">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Participante" nillable="true" type="tns:Participante" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParticipante" nillable="true" type="tns:ArrayOfParticipante" />
+  <xs:complexType name="Participante">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contato" nillable="true" type="tns:Contato" />
+      <xs:element minOccurs="0" name="Evento" nillable="true" type="tns:Evento" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdContato" type="xs:int" />
+      <xs:element minOccurs="0" name="IdEvento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Participante" nillable="true" type="tns:Participante" />
+  <xs:complexType name="ArrayOfEvento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Evento" nillable="true" type="tns:Evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEvento" nillable="true" type="tns:ArrayOfEvento" />
+</xs:schema>

@@ -15,9 +15,11 @@ namespace EventManagerWCF
         List<Contato> ContatoListar();
         // Evento
         [OperationContract]
-        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel, long latitude, long longitude);
+        void EventoAdicionar(string nome, string descricao, DateTime data, string numero_responsavel, float latitude, float longitude);
         [OperationContract]
-        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, long latitude, long longitude);
+        void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, float latitude, float longitude);
+        [OperationContract]
+        Evento EventoAbrir(int evento_id);
         [OperationContract]
         void EventoDelete(int evento_id);
         [OperationContract]

@@ -8,7 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SisEventos.Resources;
-using SisEventos.GerenciadorDeEventos;
+using SisEventos.EventManager;
+using Windows.Phone.PersonalInformation;
 
 namespace SisEventos
 {
@@ -20,29 +21,48 @@ namespace SisEventos
         public MainPage()
         {
             InitializeComponent();
+
             ws = new Service1Client();
-			ws.ContatoAdicionarCompleted += Ws_ContatoAdicionarCompleted; ;
-		}
+            ws.ContatoAdicionarCompleted += Ws_ContatoAdicionarCompleted;
 
-		private void Ws_ContatoAdicionarCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-		{
-			ws.EventoAdicionarAsync("titulo 1", "descricao 1", DateTime.Now, App.Phone, 1.0, 1.0);
-			ws.EventoAdicionarAsync("titulo 2", "descricao 2", DateTime.Now, App.Phone, 1.0, 1.0);
-			NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
-		}
+            // Adição manual de contatos à lista de telefone do usuário
+            //addPerson("Pessoa 1", "+55 84 88997766");
+            //addPerson("Pessoa 2", "+55 84 88997755");
+            //addPerson("Pessoa 3", "+55 84 88997744");
+        }
 
-		private void button_Click(object sender, RoutedEventArgs e)
+        private void Ws_ContatoAdicionarCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-			App.Phone = App.Nome = "";
-			if (loginTxt.Text != string.Empty && usernameTxt.Text != string.Empty)
-			{
-				App.Phone = loginTxt.Text;
-				App.Nome = usernameTxt.Text;
+            NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
+        }
 
-				ws.ContatoAdicionarAsync(loginTxt.Text, usernameTxt.Text, "uri");
-			}
-			else
-				MessageBox.Show("Digite nome e numero");
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            App.Phone = App.Nome = "";
+            if (loginTxt.Text != string.Empty && usernameTxt.Text != string.Empty)
+            {
+                App.Phone = loginTxt.Text;
+                App.Nome = usernameTxt.Text;
+
+                ws.ContatoAdicionarAsync(usernameTxt.Text, loginTxt.Text, "uri");
+            }
+            else
+                MessageBox.Show("Digite nome e numero");
+        }
+
+        private async void addPerson(string nome, string telefone)
+        {
+            var store = await ContactStore.CreateOrOpenAsync();
+
+            var contact = new StoredContact(store)
+            {
+                DisplayName = nome
+            };
+
+            var props = await contact.GetPropertiesAsync();
+            props.Add(KnownContactProperties.MobileTelephone, telefone);
+
+            await contact.SaveAsync();
         }
     }
 }

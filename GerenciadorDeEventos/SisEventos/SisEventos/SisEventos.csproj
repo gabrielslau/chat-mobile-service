@@ -120,7 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\GerenciadorDeEventos\Reference.cs">
+    <Compile Include="Service References\EventManager\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -163,33 +163,33 @@
     <Content Include="Assets\SquareTile71x71.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\WideLogo.png" />
-    <None Include="Service References\GerenciadorDeEventos\Service1.disco" />
-    <None Include="Service References\GerenciadorDeEventos\configuration91.svcinfo" />
-    <None Include="Service References\GerenciadorDeEventos\configuration.svcinfo" />
-    <None Include="Service References\GerenciadorDeEventos\Reference.svcmap">
+    <None Include="Service References\EventManager\Service1.wsdl" />
+    <None Include="Service References\EventManager\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventManager\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventManager\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventManager\SisEventos.EventManager.Contato.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EventManager\SisEventos.EventManager.Convite.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EventManager\SisEventos.EventManager.Evento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EventManager\Service1.disco" />
+    <None Include="Service References\EventManager\configuration91.svcinfo" />
+    <None Include="Service References\EventManager\configuration.svcinfo" />
+    <None Include="Service References\EventManager\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="ServiceReferences.ClientConfig" />
-    <None Include="Service References\GerenciadorDeEventos\Service1.wsdl" />
-    <None Include="Service References\GerenciadorDeEventos\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GerenciadorDeEventos\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GerenciadorDeEventos\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GerenciadorDeEventos\SisEventos.GerenciadorDeEventos.Contato.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\GerenciadorDeEventos\SisEventos.GerenciadorDeEventos.Convite.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\GerenciadorDeEventos\SisEventos.GerenciadorDeEventos.Evento.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
@@ -234,7 +234,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\GerenciadorDeEventos\" />
+    <WCFMetadataStorage Include="Service References\EventManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

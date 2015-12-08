@@ -7,17 +7,18 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using SisEventos.EventManager;
 
 namespace SisEventos
 {
     public partial class ParticipandoEventos : PhoneApplicationPage
     {
-        private GerenciadorDeEventos.Service1Client ws;
+        private Service1Client ws;
 
         public ParticipandoEventos()
         {
             InitializeComponent();
-            ws = new GerenciadorDeEventos.Service1Client();
+            ws = new Service1Client();
             ws.ContatoEventosCompleted += ContatoEventosCompleted;
         }
 
@@ -28,7 +29,7 @@ namespace SisEventos
             ws.ContatoEventosAsync(App.Phone);
         }
 
-        private void ContatoEventosCompleted(object sender, GerenciadorDeEventos.ContatoEventosCompletedEventArgs e) {
+        private void ContatoEventosCompleted(object sender, ContatoEventosCompletedEventArgs e) {
             listBox1.ItemsSource = e.Result;
         }
 

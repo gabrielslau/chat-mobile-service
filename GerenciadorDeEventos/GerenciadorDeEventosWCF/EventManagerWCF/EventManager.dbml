@@ -2,40 +2,40 @@
   <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=EventManager;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EventManagerConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Contato" Member="Contatos">
     <Type Name="Contato">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="numero" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="uri" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Contato_Participante" Member="Participantes" ThisKey="id" OtherKey="idContato" Type="Participante" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Uri" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Contato_Participante" Member="Participantes" ThisKey="Id" OtherKey="IdContato" Type="Participante" />
     </Type>
   </Table>
-  <Table Name="dbo.Participantes" Member="Participantes">
+  <Table Name="dbo.Participante" Member="Participantes">
     <Type Name="Participante">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idContato" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idEvento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Contato_Participante" Member="Contato" ThisKey="idContato" OtherKey="id" Type="Contato" IsForeignKey="true" />
-      <Association Name="Evento_Participante" Member="Evento" ThisKey="idEvento" OtherKey="id" Type="Evento" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdContato" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdEvento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Contato_Participante" Member="Contato" ThisKey="IdContato" OtherKey="Id" Type="Contato" IsForeignKey="true" />
+      <Association Name="Evento_Participante" Member="Evento" ThisKey="IdEvento" OtherKey="Id" Type="Evento" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Convites" Member="Convites">
+  <Table Name="dbo.Convite" Member="Convites">
     <Type Name="Convite">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="numeroConvidado" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="idEvento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Evento_Convite" Member="Evento" ThisKey="idEvento" OtherKey="id" Type="Evento" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NumeroConvidado" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IdEvento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Evento_Convite" Member="Evento" ThisKey="IdEvento" OtherKey="Id" Type="Evento" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Evento" Member="Eventos">
     <Type Name="Evento">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="descricao" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Member="latitude" Type="System.Int64" CanBeNull="false" />
-      <Column Member="longitude" Type="System.Int64" CanBeNull="false" />
-      <Association Name="Evento_Participante" Member="Participantes" ThisKey="id" OtherKey="idEvento" Type="Participante" />
-      <Association Name="Evento_Convite" Member="Convites" ThisKey="id" OtherKey="idEvento" Type="Convite" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Evento_Participante" Member="Participantes" ThisKey="Id" OtherKey="IdEvento" Type="Participante" />
+      <Association Name="Evento_Convite" Member="Convites" ThisKey="Id" OtherKey="IdEvento" Type="Convite" />
     </Type>
   </Table>
 </Database>

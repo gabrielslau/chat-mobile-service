@@ -1,0 +1,11 @@
+diff a/GerenciadorDeEventos/GerenciadorDeEventosWCF/EventManagerWCF/EventManager.designer.cs b/GerenciadorDeEventos/GerenciadorDeEventosWCF/EventManagerWCF/EventManager.designer.cs	(rejected hunks)
+@@ -19,8 +19,7 @@
+ 	using System.Linq;
+ 	using System.Linq.Expressions;
+ 	using System.ComponentModel;
+-    using System.Runtime.Serialization;
+-    using System;
++	using System;
+ 	
+ 	
+ 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EventManager")]

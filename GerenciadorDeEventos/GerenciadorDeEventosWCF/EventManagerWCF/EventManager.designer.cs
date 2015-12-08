@@ -11,18 +11,18 @@
 
 namespace EventManagerWCF
 {
-	using System.Data.Linq;
-	using System.Data.Linq.Mapping;
-	using System.Data;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.ComponentModel;
-	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EventManager")]
+    using System.Data.Linq;
+    using System.Data.Linq.Mapping;
+    using System.Data;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System;
+    using System.Runtime.Serialization;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EventManager")]
 	public partial class EventManagerDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -107,19 +107,20 @@ namespace EventManagerWCF
 		}
 	}
 	
+    [DataContract]
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Contato")]
 	public partial class Contato : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
-		private string _nome;
+		private string _Nome;
 		
-		private string _numero;
+		private string _Numero;
 		
-		private string _uri;
+		private string _Uri;
 		
 		private EntitySet<Participante> _Participantes;
 		
@@ -127,14 +128,14 @@ namespace EventManagerWCF
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnomeChanging(string value);
-    partial void OnnomeChanged();
-    partial void OnnumeroChanging(string value);
-    partial void OnnumeroChanged();
-    partial void OnuriChanging(string value);
-    partial void OnuriChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnNumeroChanging(string value);
+    partial void OnNumeroChanged();
+    partial void OnUriChanging(string value);
+    partial void OnUriChanged();
     #endregion
 		
 		public Contato()
@@ -143,87 +144,88 @@ namespace EventManagerWCF
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+        [DataMember]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numero", DbType="NChar(10)")]
+		public string Numero
+		{
+			get
+			{
+				return this._Numero;
+			}
+			set
+			{
+				if ((this._Numero != value))
+				{
+					this.OnNumeroChanging(value);
+					this.SendPropertyChanging();
+					this._Numero = value;
+					this.SendPropertyChanged("Numero");
+					this.OnNumeroChanged();
+				}
+			}
+		}
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Uri", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Uri
+		{
+			get
+			{
+				return this._Uri;
+			}
+			set
+			{
+				if ((this._Uri != value))
+				{
+					this.OnUriChanging(value);
+					this.SendPropertyChanging();
+					this._Uri = value;
+					this.SendPropertyChanged("Uri");
+					this.OnUriChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string nome
-		{
-			get
-			{
-				return this._nome;
-			}
-			set
-			{
-				if ((this._nome != value))
-				{
-					this.OnnomeChanging(value);
-					this.SendPropertyChanging();
-					this._nome = value;
-					this.SendPropertyChanged("nome");
-					this.OnnomeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero", DbType="NChar(10)")]
-		public string numero
-		{
-			get
-			{
-				return this._numero;
-			}
-			set
-			{
-				if ((this._numero != value))
-				{
-					this.OnnumeroChanging(value);
-					this.SendPropertyChanging();
-					this._numero = value;
-					this.SendPropertyChanged("numero");
-					this.OnnumeroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uri", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string uri
-		{
-			get
-			{
-				return this._uri;
-			}
-			set
-			{
-				if ((this._uri != value))
-				{
-					this.OnuriChanging(value);
-					this.SendPropertyChanging();
-					this._uri = value;
-					this.SendPropertyChanged("uri");
-					this.OnuriChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idContato")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Participantes", ThisKey="Id", OtherKey="IdContato")]
 		public EntitySet<Participante> Participantes
 		{
 			get
@@ -268,18 +270,18 @@ namespace EventManagerWCF
 			entity.Contato = null;
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Participantes")]
+    [DataContract]
+    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Participante")]
 	public partial class Participante : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
-		private int _idContato;
+		private int _IdContato;
 		
-		private int _idEvento;
+		private int _IdEvento;
 		
 		private EntityRef<Contato> _Contato;
 		
@@ -289,12 +291,12 @@ namespace EventManagerWCF
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnidContatoChanging(int value);
-    partial void OnidContatoChanged();
-    partial void OnidEventoChanging(int value);
-    partial void OnidEventoChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnIdContatoChanging(int value);
+    partial void OnIdContatoChanged();
+    partial void OnIdEventoChanging(int value);
+    partial void OnIdEventoChanged();
     #endregion
 		
 		public Participante()
@@ -303,76 +305,76 @@ namespace EventManagerWCF
 			this._Evento = default(EntityRef<Evento>);
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idContato", DbType="Int NOT NULL")]
-		public int idContato
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdContato", DbType="Int NOT NULL")]
+		public int IdContato
 		{
 			get
 			{
-				return this._idContato;
+				return this._IdContato;
 			}
 			set
 			{
-				if ((this._idContato != value))
+				if ((this._IdContato != value))
 				{
 					if (this._Contato.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidContatoChanging(value);
+					this.OnIdContatoChanging(value);
 					this.SendPropertyChanging();
-					this._idContato = value;
-					this.SendPropertyChanged("idContato");
-					this.OnidContatoChanged();
+					this._IdContato = value;
+					this.SendPropertyChanged("IdContato");
+					this.OnIdContatoChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
-		public int idEvento
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdEvento", DbType="Int NOT NULL")]
+		public int IdEvento
 		{
 			get
 			{
-				return this._idEvento;
+				return this._IdEvento;
 			}
 			set
 			{
-				if ((this._idEvento != value))
+				if ((this._IdEvento != value))
 				{
 					if (this._Evento.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidEventoChanging(value);
+					this.OnIdEventoChanging(value);
 					this.SendPropertyChanging();
-					this._idEvento = value;
-					this.SendPropertyChanged("idEvento");
-					this.OnidEventoChanged();
+					this._IdEvento = value;
+					this.SendPropertyChanged("IdEvento");
+					this.OnIdEventoChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Contato", ThisKey="idContato", OtherKey="id", IsForeignKey=true)]
+        [DataMember]
+        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Contato_Participante", Storage="_Contato", ThisKey="IdContato", OtherKey="Id", IsForeignKey=true)]
 		public Contato Contato
 		{
 			get
@@ -395,18 +397,18 @@ namespace EventManagerWCF
 					if ((value != null))
 					{
 						value.Participantes.Add(this);
-						this._idContato = value.id;
+						this._IdContato = value.Id;
 					}
 					else
 					{
-						this._idContato = default(int);
+						this._IdContato = default(int);
 					}
 					this.SendPropertyChanged("Contato");
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
+        [DataMember]
+        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Evento", ThisKey="IdEvento", OtherKey="Id", IsForeignKey=true)]
 		public Evento Evento
 		{
 			get
@@ -429,11 +431,11 @@ namespace EventManagerWCF
 					if ((value != null))
 					{
 						value.Participantes.Add(this);
-						this._idEvento = value.id;
+						this._IdEvento = value.Id;
 					}
 					else
 					{
-						this._idEvento = default(int);
+						this._IdEvento = default(int);
 					}
 					this.SendPropertyChanged("Evento");
 				}
@@ -460,18 +462,19 @@ namespace EventManagerWCF
 			}
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Convites")]
+
+    [DataContract]
+    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Convite")]
 	public partial class Convite : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
-		private string _numeroConvidado;
+		private string _NumeroConvidado;
 		
-		private int _idEvento;
+		private int _IdEvento;
 		
 		private EntityRef<Evento> _Evento;
 		
@@ -479,12 +482,12 @@ namespace EventManagerWCF
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnumeroConvidadoChanging(string value);
-    partial void OnnumeroConvidadoChanged();
-    partial void OnidEventoChanging(int value);
-    partial void OnidEventoChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNumeroConvidadoChanging(string value);
+    partial void OnNumeroConvidadoChanged();
+    partial void OnIdEventoChanging(int value);
+    partial void OnIdEventoChanged();
     #endregion
 		
 		public Convite()
@@ -492,72 +495,72 @@ namespace EventManagerWCF
 			this._Evento = default(EntityRef<Evento>);
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numeroConvidado", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string numeroConvidado
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumeroConvidado", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string NumeroConvidado
 		{
 			get
 			{
-				return this._numeroConvidado;
+				return this._NumeroConvidado;
 			}
 			set
 			{
-				if ((this._numeroConvidado != value))
+				if ((this._NumeroConvidado != value))
 				{
-					this.OnnumeroConvidadoChanging(value);
+					this.OnNumeroConvidadoChanging(value);
 					this.SendPropertyChanging();
-					this._numeroConvidado = value;
-					this.SendPropertyChanged("numeroConvidado");
-					this.OnnumeroConvidadoChanged();
+					this._NumeroConvidado = value;
+					this.SendPropertyChanged("NumeroConvidado");
+					this.OnNumeroConvidadoChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEvento", DbType="Int NOT NULL")]
-		public int idEvento
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdEvento", DbType="Int NOT NULL")]
+		public int IdEvento
 		{
 			get
 			{
-				return this._idEvento;
+				return this._IdEvento;
 			}
 			set
 			{
-				if ((this._idEvento != value))
+				if ((this._IdEvento != value))
 				{
 					if (this._Evento.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidEventoChanging(value);
+					this.OnIdEventoChanging(value);
 					this.SendPropertyChanging();
-					this._idEvento = value;
-					this.SendPropertyChanged("idEvento");
-					this.OnidEventoChanged();
+					this._IdEvento = value;
+					this.SendPropertyChanged("IdEvento");
+					this.OnIdEventoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Evento", ThisKey="idEvento", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Evento", ThisKey="IdEvento", OtherKey="Id", IsForeignKey=true)]
 		public Evento Evento
 		{
 			get
@@ -580,11 +583,11 @@ namespace EventManagerWCF
 					if ((value != null))
 					{
 						value.Convites.Add(this);
-						this._idEvento = value.id;
+						this._IdEvento = value.Id;
 					}
 					else
 					{
-						this._idEvento = default(int);
+						this._IdEvento = default(int);
 					}
 					this.SendPropertyChanged("Evento");
 				}
@@ -611,24 +614,25 @@ namespace EventManagerWCF
 			}
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evento")]
+
+    [DataContract]
+    [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evento")]
 	public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
-		private string _nome;
+		private string _Nome;
 		
-		private string _descricao;
+		private string _Descricao;
 		
-		private System.DateTime _data;
+		private System.Nullable<System.DateTime> _Data;
 		
-		private long _latitude;
+		private System.Nullable<double> _Latitude;
 		
-		private long _longitude;
+		private System.Nullable<double> _Longitude;
 		
 		private EntitySet<Participante> _Participantes;
 		
@@ -638,18 +642,18 @@ namespace EventManagerWCF
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnomeChanging(string value);
-    partial void OnnomeChanged();
-    partial void OndescricaoChanging(string value);
-    partial void OndescricaoChanged();
-    partial void OndataChanging(System.DateTime value);
-    partial void OndataChanged();
-    partial void OnlatitudeChanging(long value);
-    partial void OnlatitudeChanged();
-    partial void OnlongitudeChanging(long value);
-    partial void OnlongitudeChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnDescricaoChanging(string value);
+    partial void OnDescricaoChanged();
+    partial void OnDataChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataChanged();
+    partial void OnLatitudeChanging(System.Nullable<double> value);
+    partial void OnLatitudeChanged();
+    partial void OnLongitudeChanging(System.Nullable<double> value);
+    partial void OnLongitudeChanged();
     #endregion
 		
 		public Evento()
@@ -658,128 +662,129 @@ namespace EventManagerWCF
 			this._Convites = new EntitySet<Convite>(new Action<Convite>(this.attach_Convites), new Action<Convite>(this.detach_Convites));
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string nome
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nome
 		{
 			get
 			{
-				return this._nome;
+				return this._Nome;
 			}
 			set
 			{
-				if ((this._nome != value))
+				if ((this._Nome != value))
 				{
-					this.OnnomeChanging(value);
+					this.OnNomeChanging(value);
 					this.SendPropertyChanging();
-					this._nome = value;
-					this.SendPropertyChanged("nome");
-					this.OnnomeChanged();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string descricao
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Descricao
 		{
 			get
 			{
-				return this._descricao;
+				return this._Descricao;
 			}
 			set
 			{
-				if ((this._descricao != value))
+				if ((this._Descricao != value))
 				{
-					this.OndescricaoChanging(value);
+					this.OnDescricaoChanging(value);
 					this.SendPropertyChanging();
-					this._descricao = value;
-					this.SendPropertyChanged("descricao");
-					this.OndescricaoChanged();
+					this._Descricao = value;
+					this.SendPropertyChanged("Descricao");
+					this.OnDescricaoChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
-		public System.DateTime data
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data
 		{
 			get
 			{
-				return this._data;
+				return this._Data;
 			}
 			set
 			{
-				if ((this._data != value))
+				if ((this._Data != value))
 				{
-					this.OndataChanging(value);
+					this.OnDataChanging(value);
 					this.SendPropertyChanging();
-					this._data = value;
-					this.SendPropertyChanged("data");
-					this.OndataChanged();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_latitude")]
-		public long latitude
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Float")]
+		public System.Nullable<double> Latitude
 		{
 			get
 			{
-				return this._latitude;
+				return this._Latitude;
 			}
 			set
 			{
-				if ((this._latitude != value))
+				if ((this._Latitude != value))
 				{
-					this.OnlatitudeChanging(value);
+					this.OnLatitudeChanging(value);
 					this.SendPropertyChanging();
-					this._latitude = value;
-					this.SendPropertyChanged("latitude");
-					this.OnlatitudeChanged();
+					this._Latitude = value;
+					this.SendPropertyChanged("Latitude");
+					this.OnLatitudeChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longitude")]
-		public long longitude
+        [DataMember]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="Float")]
+		public System.Nullable<double> Longitude
 		{
 			get
 			{
-				return this._longitude;
+				return this._Longitude;
 			}
 			set
 			{
-				if ((this._longitude != value))
+				if ((this._Longitude != value))
 				{
-					this.OnlongitudeChanging(value);
+					this.OnLongitudeChanging(value);
 					this.SendPropertyChanging();
-					this._longitude = value;
-					this.SendPropertyChanged("longitude");
-					this.OnlongitudeChanged();
+					this._Longitude = value;
+					this.SendPropertyChanged("Longitude");
+					this.OnLongitudeChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Participantes", ThisKey="id", OtherKey="idEvento")]
+
+        [DataMember]
+        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Participante", Storage="_Participantes", ThisKey="Id", OtherKey="IdEvento")]
 		public EntitySet<Participante> Participantes
 		{
 			get
@@ -791,8 +796,9 @@ namespace EventManagerWCF
 				this._Participantes.Assign(value);
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Convites", ThisKey="id", OtherKey="idEvento")]
+
+        [DataMember]
+        [global::System.Data.Linq.Mapping.AssociationAttribute(Name="Evento_Convite", Storage="_Convites", ThisKey="Id", OtherKey="IdEvento")]
 		public EntitySet<Convite> Convites
 		{
 			get

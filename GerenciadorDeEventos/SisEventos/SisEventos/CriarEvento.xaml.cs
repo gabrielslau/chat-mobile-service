@@ -10,17 +10,25 @@ using Microsoft.Phone.Shell;
 using Windows.Devices.Geolocation;
 using Microsoft.Phone.Maps.Controls;
 using System.ServiceModel;
+using SisEventos.EventManager;
 
 namespace SisEventos
 {
     public partial class CriarEvento : PhoneApplicationPage
     {
-        private GerenciadorDeEventos.Service1Client ws;
+        private Service1Client ws;
 
         public CriarEvento()
         {
             InitializeComponent();
-            ws = new GerenciadorDeEventos.Service1Client();
+            ws = new Service1Client();
+            ws.EventoAdicionarCompleted += EventoAdicionarCompleted;
+        }
+
+        private void EventoAdicionarCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // Redireciona para a página de listagem de eventos em que o usuário está participando
+            NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -30,10 +38,7 @@ namespace SisEventos
             //Geoposition geoposition = await new Geolocator().GetGeopositionAsync();
             //ws.EventoAdicionarAsync(textBox.Text, txtArea.Text, DateTime.Now, App.Phone, geoposition.Coordinate.Point.Position.Latitude, geoposition.Coordinate.Point.Position.Longitude);
 
-            ws.EventoAdicionarAsync(textBox.Text, txtArea.Text, DateTime.Now, App.Phone, 1.0, 1.0);
-
-            // Redireciona para a página de listagem de eventos em que o usuário está participando
-            NavigationService.Navigate(new Uri("/ParticipandoEventos.xaml", UriKind.Relative));
+            ws.EventoAdicionarAsync(textBox.Text, txtArea.Text, DateTime.Now, App.Phone, 1, 1);
         }
     }
 }
