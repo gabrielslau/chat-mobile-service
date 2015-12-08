@@ -304,6 +304,11 @@ namespace SisEventos.GerenciadorDeEventos {
         
         void EndEventoAtualizar(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/EventoAbrir", ReplyAction="http://tempuri.org/IService1/EventoAbrirResponse")]
+        System.IAsyncResult BeginEventoAbrir(int evento_id, System.AsyncCallback callback, object asyncState);
+        
+        SisEventos.GerenciadorDeEventos.Evento EndEventoAbrir(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/EventoDelete", ReplyAction="http://tempuri.org/IService1/EventoDeleteResponse")]
         System.IAsyncResult BeginEventoDelete(int evento_id, System.AsyncCallback callback, object asyncState);
         
@@ -375,6 +380,25 @@ namespace SisEventos.GerenciadorDeEventos {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EventoAbrirCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public EventoAbrirCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SisEventos.GerenciadorDeEventos.Evento Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SisEventos.GerenciadorDeEventos.Evento)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ContatoEventosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -432,6 +456,12 @@ namespace SisEventos.GerenciadorDeEventos {
         private EndOperationDelegate onEndEventoAtualizarDelegate;
         
         private System.Threading.SendOrPostCallback onEventoAtualizarCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginEventoAbrirDelegate;
+        
+        private EndOperationDelegate onEndEventoAbrirDelegate;
+        
+        private System.Threading.SendOrPostCallback onEventoAbrirCompletedDelegate;
         
         private BeginOperationDelegate onBeginEventoDeleteDelegate;
         
@@ -545,6 +575,8 @@ namespace SisEventos.GerenciadorDeEventos {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> EventoAdicionarCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> EventoAtualizarCompleted;
+        
+        public event System.EventHandler<EventoAbrirCompletedEventArgs> EventoAbrirCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> EventoDeleteCompleted;
         
@@ -720,6 +752,52 @@ namespace SisEventos.GerenciadorDeEventos {
                         data,
                         latitude,
                         longitude}, this.onEndEventoAtualizarDelegate, this.onEventoAtualizarCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SisEventos.GerenciadorDeEventos.IService1.BeginEventoAbrir(int evento_id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginEventoAbrir(evento_id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SisEventos.GerenciadorDeEventos.Evento SisEventos.GerenciadorDeEventos.IService1.EndEventoAbrir(System.IAsyncResult result) {
+            return base.Channel.EndEventoAbrir(result);
+        }
+        
+        private System.IAsyncResult OnBeginEventoAbrir(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int evento_id = ((int)(inValues[0]));
+            return ((SisEventos.GerenciadorDeEventos.IService1)(this)).BeginEventoAbrir(evento_id, callback, asyncState);
+        }
+        
+        private object[] OnEndEventoAbrir(System.IAsyncResult result) {
+            SisEventos.GerenciadorDeEventos.Evento retVal = ((SisEventos.GerenciadorDeEventos.IService1)(this)).EndEventoAbrir(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnEventoAbrirCompleted(object state) {
+            if ((this.EventoAbrirCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.EventoAbrirCompleted(this, new EventoAbrirCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void EventoAbrirAsync(int evento_id) {
+            this.EventoAbrirAsync(evento_id, null);
+        }
+        
+        public void EventoAbrirAsync(int evento_id, object userState) {
+            if ((this.onBeginEventoAbrirDelegate == null)) {
+                this.onBeginEventoAbrirDelegate = new BeginOperationDelegate(this.OnBeginEventoAbrir);
+            }
+            if ((this.onEndEventoAbrirDelegate == null)) {
+                this.onEndEventoAbrirDelegate = new EndOperationDelegate(this.OnEndEventoAbrir);
+            }
+            if ((this.onEventoAbrirCompletedDelegate == null)) {
+                this.onEventoAbrirCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnEventoAbrirCompleted);
+            }
+            base.InvokeAsync(this.onBeginEventoAbrirDelegate, new object[] {
+                        evento_id}, this.onEndEventoAbrirDelegate, this.onEventoAbrirCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1265,6 +1343,19 @@ namespace SisEventos.GerenciadorDeEventos {
             public void EndEventoAtualizar(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("EventoAtualizar", _args, result);
+            }
+            
+            public System.IAsyncResult BeginEventoAbrir(int evento_id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = evento_id;
+                System.IAsyncResult _result = base.BeginInvoke("EventoAbrir", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SisEventos.GerenciadorDeEventos.Evento EndEventoAbrir(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SisEventos.GerenciadorDeEventos.Evento _result = ((SisEventos.GerenciadorDeEventos.Evento)(base.EndInvoke("EventoAbrir", _args, result)));
+                return _result;
             }
             
             public System.IAsyncResult BeginEventoDelete(int evento_id, System.AsyncCallback callback, object asyncState) {

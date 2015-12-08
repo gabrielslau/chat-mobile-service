@@ -25,6 +25,12 @@
   <wsdl:message name="IService1_EventoAtualizar_OutputMessage">
     <wsdl:part name="parameters" element="tns:EventoAtualizarResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_EventoAbrir_InputMessage">
+    <wsdl:part name="parameters" element="tns:EventoAbrir" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EventoAbrir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EventoAbrirResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_EventoDelete_InputMessage">
     <wsdl:part name="parameters" element="tns:EventoDelete" />
   </wsdl:message>
@@ -92,6 +98,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EventoAtualizar" message="tns:IService1_EventoAtualizar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EventoAtualizarResponse" message="tns:IService1_EventoAtualizar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EventoAbrir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EventoAbrir" message="tns:IService1_EventoAbrir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EventoAbrirResponse" message="tns:IService1_EventoAbrir_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EventoDelete">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EventoDelete" message="tns:IService1_EventoDelete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EventoDeleteResponse" message="tns:IService1_EventoDelete_OutputMessage" />
@@ -151,6 +161,15 @@
     </wsdl:operation>
     <wsdl:operation name="EventoAtualizar">
       <soap:operation soapAction="http://tempuri.org/IService1/EventoAtualizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventoAbrir">
+      <soap:operation soapAction="http://tempuri.org/IService1/EventoAbrir" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -12,8 +12,16 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
-    <phone:PhoneApplicationPage.Resources>
-        <Style x:Key="ButtonStyle1" TargetType="Button">
+	<phone:PhoneApplicationPage.Resources>
+		<DataTemplate x:Key="EventoParticipando">
+			<StackPanel Tap="AbrirEvento">
+				<TextBlock Name="ID" FontSize="20" Text="{Binding id}" Visibility="Collapsed" />
+				<TextBlock FontSize="28" Text="{Binding nome}" />
+				<TextBlock FontSize="20" Text="{Binding data}" />
+				<!--TextBlock FontSize="20" Text="{Binding Local}" /-->
+			</StackPanel>
+		</DataTemplate>
+		<Style x:Key="ButtonStyle1" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -77,23 +85,13 @@
             <TextBlock Text="Agenda de Eventos" FontSize="50" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox Name="listBox1" Margin="0,10,0,27">
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<ListBox Name="listBox1" Margin="0,10,0,27" ItemTemplate="{StaticResource EventoParticipando}">
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock FontSize="20" Text="{Binding Nome}" />
-                            <TextBlock FontSize="28" Text="{Binding Data}" />
-                            <TextBlock FontSize="28" Text="{Binding Local}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            
-        </Grid>
-    </Grid>
+			</ListBox>
+		</Grid>
+	</Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

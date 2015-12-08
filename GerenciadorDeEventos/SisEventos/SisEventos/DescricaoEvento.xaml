@@ -12,28 +12,60 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<DataTemplate x:Key="EventoParticipando">
+			<StackPanel>
+				<TextBlock Name="ID" FontSize="20" Text="{Binding id}" Visibility="Collapsed" />
+				<TextBlock FontSize="28" Text="{Binding nome}" />
+				<TextBlock FontSize="20" Text="{Binding numero}" />
+				<!--TextBlock FontSize="20" Text="{Binding Local}" /-->
+			</StackPanel>
+		</DataTemplate>
+	</phone:PhoneApplicationPage.Resources>
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Eventos" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="tituloEvento" Text="Título Evento" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock Text="Eventos" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="tituloEvento" Text="Título Evento" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,18,0,0" TextWrapping="Wrap" Text="Descrição" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="13,54,0,0" TextWrapping="Wrap" Text="-----------" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994" Height="88" Width="433"/>
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="13,164,0,0" TextWrapping="Wrap" Text="Local" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994"/>
-            <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="13,204,0,0" TextWrapping="Wrap" Text="------------" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994"/>
-            
-        </Grid>
-    </Grid>
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanelDescricao" Grid.Row="1" Margin="12,0,12,0">
+			<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,18,0,0" TextWrapping="Wrap" Text="Descrição" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994" FontSize="26.667"/>
+			<TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="13,53,0,0" TextWrapping="Wrap" Text="-----------" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994"/>
+		</Grid>
+
+		<Grid x:Name="ContentPanelLocal" Grid.Row="2" Margin="12,0,12,0">
+			<TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="13,10,0,0" TextWrapping="Wrap" Text="Local" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994" FontSize="26.667"/>
+			<TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="13,50,0,0" TextWrapping="Wrap" Text="------------" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994"/>
+
+		</Grid>
+
+		<Grid x:Name="ContentPanelParticipantes" Grid.Row="3" Margin="12,10,12,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<TextBlock x:Name="textBlock4" Grid.Row="0" HorizontalAlignment="Center" Margin="13,10,0,0" TextWrapping="Wrap" Text="Participantes" VerticalAlignment="Top" RenderTransformOrigin="0.392,-0.994" FontSize="26.667"/>
+
+			<Grid x:Name="Participantes" Grid.Row="1" Margin="12,0,12,0">
+				<ListBox Name="listBox1" Margin="0,0,0,0" ItemTemplate="{StaticResource EventoParticipando}">
+				</ListBox>
+			</Grid>
+			<Button x:Name="button" Grid.Row="3" Content="Convidar" HorizontalAlignment="Stretch" Margin="10,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.096,0.24" Click="EventoConvidar"/>
+		</Grid>
+	</Grid>
 
 </phone:PhoneApplicationPage>

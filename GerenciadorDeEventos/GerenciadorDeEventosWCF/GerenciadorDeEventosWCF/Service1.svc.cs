@@ -86,20 +86,25 @@ namespace GerenciadorDeEventosWCF
         public void EventoAdicionar(string nome, string descricao, DateTime data, string numeroResponsavel, double latitude, double longitude)
         {
             Evento evento = new Evento(nome, descricao, data, numeroResponsavel, latitude, longitude);
-        }
+		}
 
-        public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, double latitude, double longitude)
+		public void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, double latitude, double longitude)
 		{
 			Evento evento = Evento.Find(evento_id);
 			if (evento != null)
-                evento.alterarDados(nome, descricao, data, latitude, longitude);
+				evento.alterarDados(nome, descricao, data, latitude, longitude);
 			else
 			{
 				//Enviar mensagem de erro
 			}
 		}
 
-        public void EventoConvidarParticipante(int evento_id, string numeroParticipante)
+		public Evento EventoAbrir(int evento_id)
+		{
+			return Evento.Find(evento_id);
+		}
+
+		public void EventoConvidarParticipante(int evento_id, string numeroParticipante)
 		{
 			Evento evento = Evento.Find(evento_id);
 			if (evento != null)

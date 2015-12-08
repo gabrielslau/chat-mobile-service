@@ -47,6 +47,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="EventoAbrir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="evento_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EventoAbrirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="EventoAbrirResult" nillable="true" type="q2:Evento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="EventoDelete">
     <xs:complexType>
       <xs:sequence>
@@ -123,7 +137,7 @@
   <xs:element name="ContatoEventosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ContatoEventosResult" nillable="true" type="q2:ArrayOfEvento" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ContatoEventosResult" nillable="true" type="q3:ArrayOfEvento" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -137,7 +151,7 @@
   <xs:element name="ConviteListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ConviteListarResult" nillable="true" type="q3:ArrayOfConvite" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GerenciadorDeEventosWCF.ClassesBanco" minOccurs="0" name="ConviteListarResult" nillable="true" type="q4:ArrayOfConvite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

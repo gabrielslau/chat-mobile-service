@@ -19,7 +19,9 @@ namespace GerenciadorDeEventosWCF
 		[OperationContract]
 		void EventoAtualizar(int evento_id, string nome, string descricao, DateTime data, double latitude, double longitude);
 		[OperationContract]
-        void EventoDelete(int evento_id);
+		Evento EventoAbrir(int evento_id);
+		[OperationContract]
+		void EventoDelete(int evento_id);
         [OperationContract]
         void EventoConvidarParticipante(int evento_id, string numero_participante);
         [OperationContract]

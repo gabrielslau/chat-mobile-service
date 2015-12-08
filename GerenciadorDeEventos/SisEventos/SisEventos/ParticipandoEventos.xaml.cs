@@ -35,6 +35,13 @@ namespace SisEventos
         private void btnNovo_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/CriarEvento.xaml", UriKind.Relative));
-        }
-    }
+		}
+
+		private void AbrirEvento(object sender, System.Windows.Input.GestureEventArgs e)
+		{
+			string id = ((TextBlock)((StackPanel)sender).FindName("ID")).Text;
+			string uri = string.Format("/DescricaoEvento.xaml?id={0}", id);
+			NavigationService.Navigate(new Uri(uri, UriKind.Relative));
+		}
+	}
 }
